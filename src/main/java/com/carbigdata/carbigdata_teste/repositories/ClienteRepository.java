@@ -1,6 +1,6 @@
-package repositories;
+package com.carbigdata.carbigdata_teste.repositories;
 
-import entities.Cliente;
+import com.carbigdata.carbigdata_teste.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

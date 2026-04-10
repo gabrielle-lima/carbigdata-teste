@@ -1,4 +1,4 @@
-package entities;
+package com.carbigdata.carbigdata_teste.entities;
 
 import jakarta.persistence.*;
 

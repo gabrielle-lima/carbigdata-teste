@@ -1,9 +1,11 @@
-package entities;
+package com.carbigdata.carbigdata_teste.entities;
 
-import enums.StatusOcorrencia;
+import com.carbigdata.carbigdata_teste.enums.StatusOcorrencia;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Ocorrencia {
@@ -13,11 +15,11 @@ public class Ocorrencia {
 	@Column(name = "cod_ocorrencia")
 	private Long id;
 
-	@ManyToOne
 	@JoinColumn(name = "cod_cliente")
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	Cliente cliente;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "cod_endereco")
 	Endereco endereco;
 
@@ -26,6 +28,9 @@ public class Ocorrencia {
 
 	@Enumerated(EnumType.STRING)
 	private StatusOcorrencia statusOcorrencia;
+
+	@OneToMany(mappedBy = "id")
+	private List<FotoOcorrencia> fotosOcorrencia = new ArrayList<>();
 
 
 	public Long getId() {
@@ -71,11 +76,21 @@ public class Ocorrencia {
 	public Ocorrencia() {
 	}
 
-	public Ocorrencia(Long id, StatusOcorrencia statusOcorrencia, Instant dataOcorrencia, Endereco endereco, Cliente cliente) {
+	public Ocorrencia(Long id, StatusOcorrencia statusOcorrencia, Instant dataOcorrencia, Endereco endereco, Cliente cliente, List<FotoOcorrencia> fotosOcorrencia) {
 		this.id = id;
 		this.statusOcorrencia = statusOcorrencia;
 		this.dataOcorrencia = dataOcorrencia;
 		this.endereco = endereco;
 		this.cliente = cliente;
+		this.fotosOcorrencia = fotosOcorrencia;
+	}
+
+
+	public List<FotoOcorrencia> getFotosOcorrencia() {
+		return fotosOcorrencia;
+	}
+
+	public void setFotosOcorrencia(List<FotoOcorrencia> fotosOcorrencia) {
+		this.fotosOcorrencia = fotosOcorrencia;
 	}
 }

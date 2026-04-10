@@ -1,4 +1,4 @@
-package entities;
+package com.carbigdata.carbigdata_teste.entities;
 
 import jakarta.persistence.*;
 
@@ -14,7 +14,7 @@ public class Endereco {
 	@Column(name = "nme_bairro")
 	private String bairro;
 	@Column(name = "nro_cep")
-	private String CEP;
+	private String cep;
 	@Column(name = "nme_cidade")
 	private String cidade;
 	@Column(name = "nme_estado")
@@ -45,13 +45,6 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 
-	public String getCEP() {
-		return CEP;
-	}
-
-	public void setCEP(String CEP) {
-		this.CEP = CEP;
-	}
 
 	public String getLogradouro() {
 		return logradouro;
@@ -73,12 +66,20 @@ public class Endereco {
 
 	}
 
-	public Endereco(String estado, String cidade, String CEP, String bairro, String logradouro, Long id) {
+	public Endereco(String estado, String cidade, String cep, String bairro, String logradouro, Long id) {
 		this.estado = estado;
 		this.cidade = cidade;
-		this.CEP = CEP;
+		this.cep = cep;
 		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.id = id;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 }
